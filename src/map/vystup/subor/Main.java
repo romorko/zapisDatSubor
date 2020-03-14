@@ -1,17 +1,24 @@
 package map.vystup.subor;
 
 import java.io.*;
+import java.util.Random;
 
 public class Main
 {
-
     public static void main(String[] args)
     {
+        //inicializácia generátora čísel
+        Random rand = new Random();
+        //Bafrovaný zápis je treba použiť, ak je množstvo dát veľké, resp. podstatná je rýchlosť zápisu
         BufferedWriter writer = null;
         try
         {
             writer = new BufferedWriter(new FileWriter("data.out"));
-            writer.write("Toto je text ktory chcem zapisat");
+            for(int i = 0; i<1000; ++i)
+            {
+                //writer zapisuje do súboru reťazce, preto musíme generované číslo previesť na reťazec. Inak sa zapíšu do súboru haky-baky
+                writer.write(String.valueOf(rand.nextInt(100))+" ");
+            }
         }
         catch (FileNotFoundException e)
         {
@@ -25,6 +32,7 @@ public class Main
         {
             try
             {
+                //súbor môžeme uzavrieť len vtedy, ak sa ho podarilo otvoriť
                 if (writer != null)
                 {
                     writer.close();
@@ -37,12 +45,16 @@ public class Main
 
         }
 
-        //bez barfa, len na male mnozstvo dat
+        //tento zápis je bez barfa, preto sa hodí len na malé množstvo dát
         FileWriter fileWriter = null;
         try
         {
             fileWriter = new FileWriter("data1.out");
-            fileWriter.write("Toto je text ktory chcem zapisat");
+            //fileWriter.write("Toto je text ktory chcem zapisat");
+            for(int i = 0; i<1000; ++i)
+            {
+                fileWriter.write(String.valueOf(rand.nextInt(1000))+" ");
+            }
         }
         catch (FileNotFoundException e)
         {
@@ -67,14 +79,19 @@ public class Main
             }
         }
 
-        //umožňuje využívať formátovaný zápis rovnako ako na konzolu
+        //Využijeme vtedy, ak potrebujeme využívať formátovaný zápis pomocou printf rovnako ako na konzolu
 
         PrintWriter printWrite=null;
         try
         {
             FileWriter fileWrite = new FileWriter("data2.out");
             printWrite = new PrintWriter(fileWrite);
-            printWrite.printf("%s","Toto je text ktory chcem zapisat");
+            int i;
+            for(i=0;i<1000;++i)
+            {
+                printWrite.printf("%d ",rand.nextInt(1000));
+            }
+            //printWrite.printf("%s","Toto je text ktory chcem zapisat");
         }
         catch (IOException e)
         {

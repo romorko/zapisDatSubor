@@ -16,8 +16,8 @@ public class Main
             writer = new BufferedWriter(new FileWriter("data.out"));
             for(int i = 0; i<1000; ++i)
             {
-                //writer zapisuje do súboru reťazce, preto musíme generované číslo previesť na reťazec. Inak sa zapíšu do súboru haky-baky
-                writer.write(String.valueOf(rand.nextInt(100))+" ");
+                //writer zapisuje do súboru reťazce, preto musíme generované číslo previesť na reťazec (pričítaním medzery). Inak sa zapíšu do súboru haky-baky. Skúste... :-)
+                writer.write((rand.nextInt(100))+" ");
             }
         }
         catch (FileNotFoundException e)
@@ -53,7 +53,7 @@ public class Main
             //fileWriter.write("Toto je text ktory chcem zapisat");
             for(int i = 0; i<1000; ++i)
             {
-                fileWriter.write(String.valueOf(rand.nextInt(1000))+" ");
+                fileWriter.write((rand.nextInt(1000))+" ");
             }
         }
         catch (FileNotFoundException e)

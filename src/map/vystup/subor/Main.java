@@ -25,7 +25,10 @@ public class Main
         {
             try
             {
-                writer.close();
+                if (writer != null)
+                {
+                    writer.close();
+                }
             }
             catch (IOException e)
             {
@@ -53,7 +56,10 @@ public class Main
         {
             try
             {
-                fileWriter.close();
+                if (fileWriter != null)
+                {
+                    fileWriter.close();
+                }
             }
             catch (IOException e)
             {
@@ -62,19 +68,26 @@ public class Main
         }
 
         //umožňuje využívať formátovaný zápis rovnako ako na konzolu
+
+        PrintWriter printWrite=null;
         try
         {
             FileWriter fileWrite = new FileWriter("data2.out");
-            PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.print("Toto je text ktory chcem zapisat");
-            printWriter.printf("Blog name is %s", "howtodoinjava.com");
+            printWrite = new PrintWriter(fileWrite);
+            printWrite.print("Toto je text ktory chcem zapisat");
+            printWrite.printf("Blog name is %s", "howtodoinjava.com");
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            System.out.println("Nepodarilo sa vytvorit subor!");
         }
-
-        printWriter.close();
+        finally
+        {
+            if (printWrite != null)
+            {
+                printWrite.close();
+            }
+        }
 
     }
 }

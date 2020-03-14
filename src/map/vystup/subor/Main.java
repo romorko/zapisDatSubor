@@ -74,8 +74,7 @@ public class Main
         {
             FileWriter fileWrite = new FileWriter("data2.out");
             printWrite = new PrintWriter(fileWrite);
-            printWrite.print("Toto je text ktory chcem zapisat");
-            printWrite.printf("Blog name is %s", "howtodoinjava.com");
+            printWrite.printf("%s","Toto je text ktory chcem zapisat");
         }
         catch (IOException e)
         {

@@ -16,7 +16,8 @@ public class Main
             writer = new BufferedWriter(new FileWriter("data.out"));
             for(int i = 0; i<1000; ++i)
             {
-                //writer zapisuje do súboru reťazce, preto musíme generované číslo previesť na reťazec (pričítaním medzery). Inak sa zapíšu do súboru haky-baky. Skúste... :-)
+                //writer zapisuje do súboru reťazce, preto musíme generované číslo previesť na reťazec (pričítaním medzery).
+                //Iný spôsob prevodu na reťazec je pomocou toString alebo ValueOf. Inak sa zapíšu do súboru haky-baky. Skúste... :-)
                 writer.write((rand.nextInt(100))+" ");
             }
         }
@@ -79,7 +80,8 @@ public class Main
             }
         }
 
-        //Využijeme vtedy, ak potrebujeme využívať formátovaný zápis pomocou printf rovnako ako na konzolu
+        //Využijeme vtedy, ak potrebujeme využívať formátovaný zápis pomocou printf rovnako ako na konzolu. To nám umožní
+        //zápis napr. viacerých rôznych typov údajov naraz
 
         PrintWriter printWrite=null;
         try
@@ -104,6 +106,5 @@ public class Main
                 printWrite.close();
             }
         }
-
     }
 }
